@@ -16,7 +16,7 @@ class  App extends Component {
     .then(response => response.json())
     .then(res => {
       if (res.data){
-        console.log(res.data)
+        this.setState({user:[...this.state.user, ...res.data]})
       }
     })
     .catch(error => {
@@ -24,12 +24,22 @@ class  App extends Component {
     });
   }
 
-  render(){
-    return (
-    <div className="App">
-      
-    </div>
-  );
+renderUser(){
+  if (this.state.user.length <= 0) {
+    return <div>Loading...</div>
+  }
+  else{
+    return this.state.user.map((user, index) => {
+      return <div key={user.id}>{user.name}</div>
+    })
+  }
+}
+
+render() { return (
+  <div className="App">
+    {this.renderUser()}
+  </div>
+);
 }
 }
 
