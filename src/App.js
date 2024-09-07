@@ -7,7 +7,8 @@ class  App extends Component {
     super(props)
   
     this.state = {
-       user:[]
+       user:[],
+       message:''
     }
   }
 
@@ -16,7 +17,8 @@ class  App extends Component {
     .then(response => response.json())
     .then(res => {
       if (res.data){
-        this.setState({user:[...this.state.user, ...res.data]})
+        
+        this.setState({user:res.data, message: res.message})
       }
     })
     .catch(error => {
@@ -37,6 +39,7 @@ renderUser(){
 
 render() { return (
   <div className="App">
+    <p id="message">{this.state.message}</p>
     {this.renderUser()}
   </div>
 );
