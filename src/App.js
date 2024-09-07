@@ -1,8 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
 import React, { Component } from 'react';
 
 class  App extends Component {
+
   constructor(props) {
     super(props)
   
@@ -30,7 +30,7 @@ renderUser(){
   }
   else{
     return this.state.user.map((user, index) => {
-      return <div key={user.id}>{user.name}</div>
+      return <div key={user.id}><p> {user.name} is {user.age} years old </p></div>
     })
   }
 }
